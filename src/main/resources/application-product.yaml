@@ -16,7 +16,7 @@ kafka:
     groupid: test
     topic: test
     broker: 192.168.201.50:9092
-    threadnum: 1
+    threadnum: 3
 
 err:
   file:

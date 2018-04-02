@@ -1,1 +1,5 @@
-有关
+有关kafka的demo程序，采用springboot微服务框架。
+
+有关配置信息均放置application-product.yaml文件中
+
+实现了生产者和消费者两个task
