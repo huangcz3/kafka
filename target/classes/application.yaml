@@ -1,8 +1,0 @@
-spring :
-  profiles:
-    active: product
-management:
-  security:
-    enabled: false
-
-
