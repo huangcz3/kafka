@@ -13,9 +13,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @date 2018-04-02 11:31
  * @desc
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
 @EnableScheduling
 @EnableAsync
+@SpringBootApplication
 public class KafkaApplication {
     public static void main(String[] args) {
         SpringApplication.run(KafkaApplication.class,args);

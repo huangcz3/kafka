@@ -1,0 +1,44 @@
+#spring :
+#  profiles:
+#    active: product
+management:
+  security:
+    enabled: false
+
+server:
+  port: 8084
+  address: 127.0.0.1
+  sessionTimeout: 60
+  contextPath: /kafkademo
+
+#mysql数据库配置
+spring:
+  datasource:
+    primary:
+#      driver-class-name: com.mysql.jdbc.Driver
+#     url: jdbc:mysql://localhost:3306/daping?&useUnicode=true&characterEncoding=utf8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+  redis:
+    cluster:
+      nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384
+      password: 123456
+#redis集群配置
+
+
+#kafka配置
+kafka:
+  config:
+    zk: 10.200.100.252:2181
+    groupid: test
+    topic: test
+    broker: 10.200.100.252:9092
+    threadnum: 3
+  message:
+    count: 1000
+
+err:
+  file:
+    path: /

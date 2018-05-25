@@ -6,7 +6,8 @@ import com.xxx.thread.ConsumerThread;
 import kafka.consumer.Consumer;
 import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ import java.util.Map;
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
 
-    private Logger logger = Logger.getLogger(ConsumerService.class);
+    private Logger logger = LoggerFactory.getLogger(ConsumerService.class);
 
     @Autowired
     private InsertServiceImpl insertService;

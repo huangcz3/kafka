@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author User
  * @date 2018-04-02 11:45
- * @desc
+ * @desc 消费者task
  */
 @Component
 @Order(value = 2)

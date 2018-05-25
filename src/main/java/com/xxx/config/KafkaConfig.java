@@ -42,8 +42,8 @@ public class KafkaConfig {
         Properties props = new Properties();
         props.put("zookeeper.connect", zkServer);
 //        props.put("bootstrap.servers",broker);
-        props.put("key.deserializer", "org.apache.kafka.common.serialization.Deserializer");
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.Deserializer");
+//        props.put("key.deserializer", "org.apache.kafka.common.serialization.Deserializer");
+//        props.put("value.deserializer", "org.apache.kafka.common.serialization.Deserializer");
         props.put("group.id", groupid);
         props.put("zookeeper.session.timeout.ms", "50000");
         props.put("zookeeper.sync.time.ms", "2000");
@@ -58,8 +58,7 @@ public class KafkaConfig {
     public ProducerConfig createProduceerConfig() {
         Properties props = new Properties();
         //此处配置的是kafka的端口
-        props.put("metadata.broker.list", "192.168.201.50:9092");
-
+        props.put("metadata.broker.list", broker);
         //配置value的序列化类
         props.put("serializer.class", "kafka.serializer.StringEncoder");
         //配置key的序列化类

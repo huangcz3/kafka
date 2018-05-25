@@ -22,15 +22,18 @@ public class ProducerServiceImpl implements ProducerService {
     @Value("${kafka.config.topic}")
     private String topic;
 
+    @Value("${kafka.message.count}")
+    private int messageCount;
+
     @Override
     public void produceThd() {
         //创建kafka连接
         Producer producer = new Producer(config.createProduceerConfig());
 
-        int messageNo = 0;
-        final int COUNT = 5000;
+        int messageNo = 1;
+//        final int COUNT = 100;
 
-        while (messageNo <= COUNT) {
+        while (messageNo <= messageCount) {
             String key = String.valueOf(messageNo);
             String data = "hello kafka！"+  "第" + key +"message" ;
             producer.send(new KeyedMessage<String, String>(topic, key, data));

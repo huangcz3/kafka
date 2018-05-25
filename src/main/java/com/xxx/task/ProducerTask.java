@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @date 2018-04-02 15:50
  * @desc 生产者task
  */
-@Component
-@Order(value = 1)
+//@Component
+//@Order(value = 1)
 public class ProducerTask implements CommandLineRunner{
 
     @Autowired

@@ -1,7 +1,10 @@
 package com.xxx.service.impl;
 
+import com.xxx.mapper.TestMapper;
 import com.xxx.service.InsertService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.JedisCluster;
 
 /**
  * @author User
@@ -10,8 +13,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class InsertServiceImpl implements InsertService {
-    @Override
-    public void insert() {
 
+    @Autowired
+    private TestMapper testMapper;
+
+    @Autowired
+    private JedisCluster jedisCluster;
+
+    @Override
+    public void insert(String message) {
+        jedisCluster.sadd("test",message);
+//        testMapper.insert(message);
     }
 }

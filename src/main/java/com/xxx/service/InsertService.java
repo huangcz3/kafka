@@ -6,5 +6,5 @@ package com.xxx.service;
  * @desc
  */
 public interface InsertService {
-    void insert();
+    void insert(String message);
 }

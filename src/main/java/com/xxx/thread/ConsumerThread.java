@@ -4,7 +4,9 @@ import com.xxx.service.InsertService;
 import kafka.consumer.ConsumerIterator;
 import kafka.consumer.KafkaStream;
 import kafka.message.MessageAndMetadata;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
 
@@ -15,9 +17,13 @@ import java.io.UnsupportedEncodingException;
  */
 public class ConsumerThread implements Runnable {
     private KafkaStream<byte[], byte[]> stream;
+
+    @Autowired
     private InsertService insertService;
+
     private String path;
-    private Logger logger = Logger.getLogger(ConsumerThread.class);
+
+    private Logger logger = LoggerFactory.getLogger(ConsumerThread.class);
 
     //线程构造
     public ConsumerThread(KafkaStream stream, InsertService insertService, String path) {
@@ -35,9 +41,11 @@ public class ConsumerThread implements Runnable {
         while (iterator.hasNext()) {
             try {
                 MessageAndMetadata<byte[], byte[]> messageAndMetadata = iterator.next();
+//                String message = new String(messageAndMetadata.message(), "utf-8");
                 String message = new String(messageAndMetadata.message(), "utf-8");
+                insertService.insert(message);
                 logger.info("message:" + message);
-                logger.info(++count + "=========" + Thread.currentThread().getId());
+//                logger.info(++count + "=========" + Thread.currentThread().getId());
 //                System.out.println("topic:" + messageAndMetadata.topic() + " " +
 //                        "partition:" + messageAndMetadata.partition() + " " +
 //                        "offset:" + messageAndMetadata.offset() + " " +
